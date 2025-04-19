@@ -6,7 +6,12 @@ class FoodModel {
   double price;
   FoodCategory foodCategory;
 
-  FoodModel(this.image, this.name, this.price, this.foodCategory);
+  FoodModel({
+    required this.foodCategory,
+    required this.image,
+    required this.name,
+    required this.price,
+  });
 
   String editPrice(double newPrice) {
     price = newPrice;

@@ -1,6 +1,6 @@
 import 'package:restaurant_service/data/models/food_with_quantity_model.dart';
 
-class OderModel {
+class OrderModel {
   List<FoodWithQuantityModel> allOrders = [];
   double totalPrice = 0;
 

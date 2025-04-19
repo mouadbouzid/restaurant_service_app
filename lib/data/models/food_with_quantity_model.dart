@@ -4,7 +4,7 @@ class FoodWithQuantityModel {
   static int _idCounter = 1;
 
   final int id;
-  int qauntity;
+  int qauntity = 1;
   FoodModel foodModel;
   double totalPrice() {
     return qauntity * foodModel.price;
