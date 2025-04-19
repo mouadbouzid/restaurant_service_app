@@ -12,6 +12,10 @@ class OderModel {
     allOrders.removeWhere((item) => item.id == namber);
   }
 
+  void deleteAllFood() {
+    allOrders.clear();
+  }
+
   void ordersPrice() {
     for (var order in allOrders) {
       totalPrice += order.totalPrice();
