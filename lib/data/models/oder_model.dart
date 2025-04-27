@@ -16,9 +16,10 @@ class OrderModel {
     allOrders.clear();
   }
 
-  void ordersPrice() {
+  double ordersPrice() {
     for (var order in allOrders) {
       totalPrice += order.totalPrice();
     }
+    return totalPrice;
   }
 }
