@@ -5,14 +5,14 @@ import 'package:restaurant_service/data/models/food_with_quantity_model.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
 import 'package:restaurant_service/screens/widgets/order_card.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Orders extends StatefulWidget {
+  const Orders({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Orders> createState() => _OrdersState();
 }
 
-class _HomeState extends State<Home> {
+class _OrdersState extends State<Orders> {
   FoodWithQuantityModel foodWithQuantityModel = FoodWithQuantityModel(
     qauntity: 1,
     foodModel: FoodModel(
@@ -34,9 +34,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Restaurant"),
-      ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 18),
         child: Column(

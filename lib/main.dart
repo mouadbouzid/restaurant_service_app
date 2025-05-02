@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_service/layout.dart';
 import 'package:restaurant_service/screens/home.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class RestaurantService extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: const Home(),
+      home: LayoutApp(),
     );
   }
 }

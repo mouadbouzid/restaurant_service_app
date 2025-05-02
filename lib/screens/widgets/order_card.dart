@@ -27,7 +27,7 @@ class _OrderCardState extends State<OrderCard> {
           widget.foodWithQuantityModel.foodModel.name,
           style: TextStyle(fontSize: 18),
         ),
-        subtitle: Text(" ${widget.foodWithQuantityModel.totalPrice()} Dh"),
+        subtitle: Text(" ${widget.foodWithQuantityModel.foodModel.price} Dh"),
         trailing: Container(
           height: 40,
           width: 120,
@@ -41,7 +41,7 @@ class _OrderCardState extends State<OrderCard> {
             children: [
               IconButton(
                 onPressed: () {
-                  widget.foodWithQuantityModel.qauntity += 1;
+                  widget.foodWithQuantityModel.qauntity++;
                   setState(() {});
                 },
                 icon: Icon(
@@ -58,7 +58,7 @@ class _OrderCardState extends State<OrderCard> {
                 onPressed: () {
                   if (widget.foodWithQuantityModel.qauntity == 0) {
                   } else {
-                    widget.foodWithQuantityModel.qauntity -= 1;
+                    widget.foodWithQuantityModel.qauntity--;
                     setState(() {});
                   }
                 },
