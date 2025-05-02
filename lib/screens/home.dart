@@ -13,12 +13,21 @@ class Orders extends StatefulWidget {
 }
 
 class _OrdersState extends State<Orders> {
-  FoodWithQuantityModel foodWithQuantityModel = FoodWithQuantityModel(
+  FoodWithQuantityModel order1 = FoodWithQuantityModel(
     qauntity: 1,
     foodModel: FoodModel(
         foodCategory: FoodCategory.food,
         image:
             "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/48a49653c8716457eb0b2f7eb3c7d74c/Derivates/8d83d9ed4567fa15456d8eec7557e60006a15576.jpg",
+        name: "Cola",
+        price: 19),
+  );
+  FoodWithQuantityModel order2 = FoodWithQuantityModel(
+    qauntity: 1,
+    foodModel: FoodModel(
+        foodCategory: FoodCategory.boissons,
+        image:
+            "https://www.pizzeriagranby.ca/wp-content/uploads/2020/10/cocacola.jpg",
         name: "Pizza",
         price: 19),
   );
@@ -28,21 +37,52 @@ class _OrdersState extends State<Orders> {
   @override
   void initState() {
     super.initState();
-    orderrr.addFood(foodWithQuantityModel);
+    orderrr.addFood(order1);
+    orderrr.addFood(order2);
+    orderrr.addFood(order1);
+    orderrr.addFood(order2);
+    orderrr.addFood(order1);
+    orderrr.addFood(order2);
+    orderrr.addFood(order1);
+    orderrr.addFood(order2);
+    orderrr.addFood(order1);
+    orderrr.addFood(order2);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Restaurant"),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 15),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  orderrr.deleteAllFood();
+                });
+              },
+              child: Text(
+                "supprimer",
+                style: TextStyle(fontSize: 18, color: Colors.red),
+              ),
+            ),
+          )
+        ],
+      ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 18),
+        padding: EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 18,
+        ),
         child: Column(
+          spacing: 15,
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            OrderCard(foodWithQuantityModel: foodWithQuantityModel),
-            SizedBox(
-              height: 30,
+            Expanded(
+              child: OrderCard(oders: orderrr),
             ),
             GestureDetector(
               onTap: () {},
@@ -61,7 +101,6 @@ class _OrdersState extends State<Orders> {
                 ),
               ),
             ),
-            Spacer(),
             Container(
               decoration: BoxDecoration(
                   color: Colors.red, borderRadius: BorderRadius.circular(15)),

@@ -21,9 +21,6 @@ class _LayoutAppState extends State<LayoutApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Restaurant"),
-      ),
       body: _pages.elementAt(_index),
       bottomNavigationBar: NavigationBar(
           selectedIndex: _index,
