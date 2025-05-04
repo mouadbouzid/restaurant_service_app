@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_service/data/models/food_with_quantity_model.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
 
 class OrderCard extends StatefulWidget {
@@ -22,10 +21,12 @@ class _OrderCardState extends State<OrderCard> {
         itemBuilder: (BuildContext content, int index) {
           return Card(
             child: ListTile(
-              leading: Image.network(
-                widget.oders.allOrders[index].foodModel.image,
+              leading: SizedBox(
                 width: 60,
                 height: 60,
+                child: Image.network(
+                  widget.oders.allOrders[index].foodModel.image,
+                ),
               ),
               title: Text(
                 widget.oders.allOrders[index].foodModel.name,

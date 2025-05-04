@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/layout.dart';
-import 'package:restaurant_service/screens/home.dart';
 
 void main() {
   runApp(const RestaurantService());

@@ -4,7 +4,7 @@ import 'package:restaurant_service/screens/home.dart';
 import 'package:restaurant_service/screens/manage.dart';
 
 class LayoutApp extends StatefulWidget {
-  LayoutApp({super.key});
+  const LayoutApp({super.key});
 
   @override
   State<LayoutApp> createState() => _LayoutAppState();
@@ -13,7 +13,7 @@ class LayoutApp extends StatefulWidget {
 class _LayoutAppState extends State<LayoutApp> {
   int _index = 0;
 
-  List<Widget> _pages = [
+  final List<Widget> _pages = [
     Orders(),
     Manage(),
   ];
