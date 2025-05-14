@@ -1,6 +1,14 @@
 import 'package:restaurant_service/data/models/food_model.dart';
 
 class ManageFood {
+  ManageFood._privateConstructor(); // private constructor
+  static final ManageFood _instance =
+      ManageFood._privateConstructor(); // single instance
+
+  factory ManageFood() {
+    return _instance;
+  }
+
   final List<FoodModel> allProdacts = [];
 
   void addFood(FoodModel food) {
@@ -12,15 +20,12 @@ class ManageFood {
   }
 
   String editPrice(String name, double newPrice) {
-    String msg = '';
     for (var prodact in allProdacts) {
       if (prodact.name == name) {
         prodact.price = newPrice;
-        msg = "Le prix a été changé";
-      } else {
-        msg = "Le nom est introuvale ou incorrect";
+        return "Le prix a été changé";
       }
     }
-    return msg;
+    return "Le nom est introuvable ou incorrect";
   }
 }

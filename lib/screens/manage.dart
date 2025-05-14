@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:restaurant_service/screens/add_prodact.dart';
+import 'package:restaurant_service/screens/delete_prodact.dart';
+import 'package:restaurant_service/screens/edit_price.dart';
 import 'package:restaurant_service/screens/menu.dart';
+import 'package:restaurant_service/screens/search_prodact.dart';
 
 class Manage extends StatelessWidget {
   const Manage({super.key});
@@ -51,6 +54,12 @@ class Manage extends StatelessWidget {
             ),
             Card(
               child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SearchProdact()));
+                },
                 leading: Image.asset(
                   "assets/icons/edit_food.png",
                   width: 50,
@@ -62,6 +71,12 @@ class Manage extends StatelessWidget {
             ),
             Card(
               child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DeleteProdact()));
+                },
                 leading: Image.asset(
                   "assets/icons/delete_food.png",
                   width: 50,

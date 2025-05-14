@@ -5,14 +5,16 @@ import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/screens/widgets/title_input.dart';
 
-class AddProdact extends StatefulWidget {
-  const AddProdact({super.key});
+class EditPrice extends StatefulWidget {
+  const EditPrice({super.key, required this.foodModel});
+
+  final FoodModel foodModel;
 
   @override
-  State<AddProdact> createState() => _AddProdactState();
+  State<EditPrice> createState() => _EditPriceState();
 }
 
-class _AddProdactState extends State<AddProdact> {
+class _EditPriceState extends State<EditPrice> {
   TextEditingController imageController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -20,11 +22,20 @@ class _AddProdactState extends State<AddProdact> {
   final foodManager = ManageFood();
 
   @override
+  void initState() {
+    super.initState();
+    imageController.text = widget.foodModel.image;
+    nameController.text = widget.foodModel.name;
+    priceController.text = widget.foodModel.price.toString();
+    foodCategory = widget.foodModel.foodCategory;
+  }
+
+  @override
   void dispose() {
+    imageController.dispose();
+    nameController.dispose();
+    priceController.dispose();
     super.dispose();
-    imageController;
-    nameController;
-    priceController;
   }
 
   @override
@@ -40,21 +51,21 @@ class _AddProdactState extends State<AddProdact> {
           children: [
             TitleInput(
                 controller: imageController,
-                readOnly: false,
+                readOnly: true,
                 title: "L'image",
-                hintText: "enter URL d'image",
+                hintText: widget.foodModel.image,
                 inputType: TextInputType.text),
             TitleInput(
                 controller: nameController,
-                readOnly: false,
+                readOnly: true,
                 title: "Le nome",
-                hintText: "enter le nome",
+                hintText: widget.foodModel.name,
                 inputType: TextInputType.text),
             TitleInput(
                 controller: priceController,
                 readOnly: false,
-                title: "Le prixe",
-                hintText: "enter le prixe",
+                title: "Nouveau prix",
+                hintText: "enter nouveau prix",
                 inputType: TextInputType.text),
             SizedBox(height: 10),
             Text(
@@ -75,16 +86,14 @@ class _AddProdactState extends State<AddProdact> {
                 padding: EdgeInsets.symmetric(horizontal: 16),
               ),
               isExpanded: true,
-              hint: Text('Select Category'),
+              value: widget.foodModel.foodCategory, //  Show current category
               items: FoodCategory.values
                   .map((category) => DropdownMenuItem(
                         value: category,
                         child: Text(category.name),
                       ))
                   .toList(),
-              onChanged: (value) {
-                foodCategory = value ?? FoodCategory.food;
-              },
+              onChanged: null, //  Disable selection
             ),
             SizedBox(height: 30),
             SizedBox(
@@ -92,13 +101,9 @@ class _AddProdactState extends State<AddProdact> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  foodManager.addFood(
-                    FoodModel(
-                      foodCategory: foodCategory,
-                      image: imageController.text,
-                      name: nameController.text,
-                      price: double.tryParse(priceController.text) ?? 0.0,
-                    ),
+                  foodManager.editPrice(
+                    nameController.text,
+                    double.tryParse(priceController.text) ?? 0.0,
                   );
                   Navigator.of(context).pop();
                 },

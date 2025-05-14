@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/food_category_enum.dart';
 import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/food_with_quantity_model.dart';
+import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
 import 'package:restaurant_service/screens/widgets/order_card.dart';
 
@@ -13,6 +14,20 @@ class Orders extends StatefulWidget {
 }
 
 class _OrdersState extends State<Orders> {
+  final manageFood = ManageFood();
+
+  var food1 = FoodModel(
+      foodCategory: FoodCategory.boissons,
+      image:
+          "https://www.pizzeriagranby.ca/wp-content/uploads/2020/10/cocacola.jpg",
+      name: "cola",
+      price: 19);
+  var food2 = FoodModel(
+      foodCategory: FoodCategory.food,
+      image:
+          "https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/48a49653c8716457eb0b2f7eb3c7d74c/Derivates/8d83d9ed4567fa15456d8eec7557e60006a15576.jpg",
+      name: "pizza",
+      price: 29);
   FoodWithQuantityModel order1 = FoodWithQuantityModel(
     qauntity: 1,
     foodModel: FoodModel(
@@ -37,6 +52,8 @@ class _OrdersState extends State<Orders> {
   @override
   void initState() {
     super.initState();
+    manageFood.addFood(food1);
+    manageFood.addFood(food2);
     orderrr.addFood(order1);
     orderrr.addFood(order2);
     orderrr.addFood(order1);
