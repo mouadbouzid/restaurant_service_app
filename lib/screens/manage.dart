@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:restaurant_service/screens/add_prodact.dart';
 import 'package:restaurant_service/screens/delete_prodact.dart';
-import 'package:restaurant_service/screens/edit_price.dart';
 import 'package:restaurant_service/screens/menu.dart';
 import 'package:restaurant_service/screens/search_prodact.dart';
 

@@ -4,6 +4,7 @@ import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/food_with_quantity_model.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
+import 'package:restaurant_service/screens/add_order.dart';
 import 'package:restaurant_service/screens/widgets/order_card.dart';
 
 class Orders extends StatefulWidget {
@@ -102,7 +103,10 @@ class _OrdersState extends State<Orders> {
               child: OrderCard(oders: orderrr),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const AddOrder()));
+              },
               child: Container(
                 decoration: BoxDecoration(
                     border:
