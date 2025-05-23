@@ -47,7 +47,6 @@ class ChoosingACategory extends StatelessWidget {
                           AddOder(category: enumCategories[index]),
                     ),
                   );
-                  print(enumCategories[index]);
                 },
                 child: Container(
                   margin: EdgeInsets.all(4),

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
 
 class OrderCard extends StatefulWidget {
+  final VoidCallback onQuantityChanged;
+  final OrderModel oders;
+
   const OrderCard({
     super.key,
     required this.oders,
+    required this.onQuantityChanged,
   });
-
-  final OrderModel oders;
 
   @override
   State<OrderCard> createState() => _OrderCardState();
@@ -49,6 +51,7 @@ class _OrderCardState extends State<OrderCard> {
                       onPressed: () {
                         widget.oders.allOrders[index].qauntity++;
                         setState(() {});
+                        widget.onQuantityChanged();
                       },
                       icon: Icon(
                         Icons.add_circle_rounded,
@@ -66,6 +69,7 @@ class _OrderCardState extends State<OrderCard> {
                         } else {
                           widget.oders.allOrders[index].qauntity--;
                           setState(() {});
+                          widget.onQuantityChanged();
                         }
                       },
                       icon: Icon(

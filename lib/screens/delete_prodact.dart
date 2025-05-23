@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 
-class DeleteProdact extends StatefulWidget {
-  const DeleteProdact({super.key});
+class DeleteProdact extends StatelessWidget {
+  DeleteProdact({super.key});
 
-  @override
-  State<DeleteProdact> createState() => _DeleteProdactState();
-}
-
-class _DeleteProdactState extends State<DeleteProdact> {
   final manageFood = ManageFood();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Recherche de produits"),
+        title: Text("suprimé de produits"),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(

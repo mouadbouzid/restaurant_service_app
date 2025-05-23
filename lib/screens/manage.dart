@@ -22,8 +22,8 @@ class Manage extends StatelessWidget {
             Card(
               child: ListTile(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Menu()));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Menu()));
                 },
                 leading: Image.asset(
                   "assets/icons/food_menu.png",
@@ -71,10 +71,8 @@ class Manage extends StatelessWidget {
             Card(
               child: ListTile(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DeleteProdact()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DeleteProdact()));
                 },
                 leading: Image.asset(
                   "assets/icons/delete_food.png",

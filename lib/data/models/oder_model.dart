@@ -1,6 +1,11 @@
 import 'package:restaurant_service/data/models/food_with_quantity_model.dart';
 
 class OrderModel {
+  OrderModel._privateConstructor();
+  static final OrderModel _instance = OrderModel._privateConstructor();
+  factory OrderModel() {
+    return _instance;
+  }
   List<FoodWithQuantityModel> allOrders = [];
   double totalPrice = 0;
 
@@ -13,6 +18,7 @@ class OrderModel {
   }
 
   void deleteAllFood() {
+    totalPrice = 0;
     allOrders.clear();
   }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:restaurant_service/screens/home.dart';
+import 'package:restaurant_service/screens/orders.dart';
 import 'package:restaurant_service/screens/manage.dart';
 
 class LayoutApp extends StatefulWidget {
