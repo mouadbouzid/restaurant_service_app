@@ -4,7 +4,7 @@ import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/food_with_quantity_model.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
-import 'package:restaurant_service/screens/orders.dart';
+import 'package:restaurant_service/layout.dart';
 
 class AddOder extends StatefulWidget {
   final FoodCategory category;
@@ -60,9 +60,11 @@ class _AddOderState extends State<AddOder> {
                                 price: specificProducts[index].price)));
                         Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => Orders()),
-                          (route) => false, // remove all previous routes
+                          MaterialPageRoute(
+                              builder: (context) => LayoutApp(initialIndex: 0)),
+                          (route) => false,
                         );
+
                         setState(() {});
                       },
                       leading: SizedBox(

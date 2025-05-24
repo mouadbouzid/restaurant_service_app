@@ -15,8 +15,8 @@ class ChoosingACategory extends StatelessWidget {
   final List<String> foodCategoryImages = [
     "breakfast.png",
     "drinks.png",
-    "food.png",
     "tea_time.png",
+    "food.png",
   ];
   final List<FoodCategory> enumCategories = [
     FoodCategory.petitDejuners,

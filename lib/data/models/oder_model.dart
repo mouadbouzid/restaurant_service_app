@@ -7,7 +7,6 @@ class OrderModel {
     return _instance;
   }
   List<FoodWithQuantityModel> allOrders = [];
-  double totalPrice = 0;
 
   void addFood(FoodWithQuantityModel foodWithQuantityModel) {
     allOrders.add(foodWithQuantityModel);
@@ -18,14 +17,9 @@ class OrderModel {
   }
 
   void deleteAllFood() {
-    totalPrice = 0;
     allOrders.clear();
   }
 
-  double ordersPrice() {
-    for (var order in allOrders) {
-      totalPrice += order.totalPrice();
-    }
-    return totalPrice;
-  }
+  double ordersPrice() =>
+      allOrders.fold(0, (sum, order) => sum + order.totalPrice());
 }

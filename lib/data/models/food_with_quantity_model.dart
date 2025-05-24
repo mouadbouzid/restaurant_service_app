@@ -6,10 +6,11 @@ class FoodWithQuantityModel {
   final int id;
   int qauntity = 1;
   FoodModel foodModel;
-  double totalPrice() {
-    return qauntity * foodModel.price;
-  }
 
   FoodWithQuantityModel({required this.qauntity, required this.foodModel})
       : id = _idCounter++;
+
+  double totalPrice() {
+    return qauntity * foodModel.price;
+  }
 }

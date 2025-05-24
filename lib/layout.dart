@@ -4,14 +4,16 @@ import 'package:restaurant_service/screens/orders.dart';
 import 'package:restaurant_service/screens/manage.dart';
 
 class LayoutApp extends StatefulWidget {
-  const LayoutApp({super.key});
+  final int initialIndex;
+
+  const LayoutApp({super.key, this.initialIndex = 0});
 
   @override
   State<LayoutApp> createState() => _LayoutAppState();
 }
 
 class _LayoutAppState extends State<LayoutApp> {
-  int _index = 0;
+  late int _index;
 
   final List<Widget> _pages = [
     Orders(),
@@ -19,26 +21,33 @@ class _LayoutAppState extends State<LayoutApp> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _index = widget.initialIndex;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages.elementAt(_index),
+      body: _pages[_index],
       bottomNavigationBar: NavigationBar(
-          selectedIndex: _index,
-          onDestinationSelected: (value) {
-            setState(() {
-              _index = value;
-            });
-          },
-          destinations: [
-            NavigationDestination(
-                icon: Icon(_index == 0
-                    ? Iconsax.shopping_bag
-                    : Iconsax.shopping_bag_copy),
-                label: 'Commandes'),
-            NavigationDestination(
-                icon: Icon(_index == 1 ? Iconsax.edit : Iconsax.edit_2),
-                label: 'Gérer')
-          ]),
+        selectedIndex: _index,
+        onDestinationSelected: (value) {
+          setState(() {
+            _index = value;
+          });
+        },
+        destinations: [
+          NavigationDestination(
+              icon: Icon(_index == 0
+                  ? Iconsax.shopping_bag
+                  : Iconsax.shopping_bag_copy),
+              label: 'Commandes'),
+          NavigationDestination(
+              icon: Icon(_index == 1 ? Iconsax.edit : Iconsax.edit_2),
+              label: 'Gérer')
+        ],
+      ),
     );
   }
 }
