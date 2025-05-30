@@ -13,7 +13,7 @@ class OrderModel {
   }
 
   void deleteFood(int namber) {
-    allOrders.removeWhere((item) => item.id == namber);
+    allOrders.removeWhere((item) => item.foodModel.id == namber);
   }
 
   void deleteAllFood() {

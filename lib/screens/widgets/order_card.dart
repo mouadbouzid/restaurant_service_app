@@ -65,7 +65,11 @@ class _OrderCardState extends State<OrderCard> {
                     ),
                     IconButton(
                       onPressed: () {
-                        if (widget.oders.allOrders[index].qauntity == 0) {
+                        if (widget.oders.allOrders[index].qauntity == 1) {
+                          widget.oders.deleteFood(
+                              widget.oders.allOrders[index].foodModel.id!);
+                          setState(() {});
+                          widget.onQuantityChanged();
                         } else {
                           widget.oders.allOrders[index].qauntity--;
                           setState(() {});

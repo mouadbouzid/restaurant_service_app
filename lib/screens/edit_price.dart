@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/food_category_enum.dart';
 import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
+import 'package:restaurant_service/layout.dart';
 import 'package:restaurant_service/screens/widgets/title_input.dart';
 
 class EditPrice extends StatefulWidget {
@@ -105,7 +106,12 @@ class _EditPriceState extends State<EditPrice> {
                     nameController.text,
                     double.tryParse(priceController.text) ?? 0.0,
                   );
-                  Navigator.of(context).pop();
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => LayoutApp(initialIndex: 1)),
+                    (route) => false,
+                  );
                 },
                 child: Text("Ajouter"),
               ),
