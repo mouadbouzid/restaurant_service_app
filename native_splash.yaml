@@ -1,0 +1,17 @@
+flutter_native_splash:
+  # Specify the platforms that you want to support.
+  android: true
+  ios: true
+  web: false
+
+  background_image: "assets/images/white_background.jpeg" # Or add a color like this example -> color: "#00B9E8"
+  image: "assets/images/image.png"
+
+  # Dark mode
+  background_image_dark: "assets/images/black_background.jpeg"
+  image_dark: "assets/images/image.png"
+
+  android_12:
+    # The background image property is not supported in this version of Android
+    color: "#00B9E8"
+    image: "assets/images/image.png"
