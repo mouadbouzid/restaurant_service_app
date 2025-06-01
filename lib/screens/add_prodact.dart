@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:restaurant_service/data/models/food_category_enum.dart';
 import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
+import 'package:restaurant_service/screens/widgets/pick_image_widget.dart';
 import 'package:restaurant_service/screens/widgets/title_input.dart';
 
 class AddProdact extends StatefulWidget {
@@ -16,8 +20,12 @@ class _AddProdactState extends State<AddProdact> {
   TextEditingController imageController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
+
   FoodCategory selectedCategory = FoodCategory.food;
+
   final foodManager = ManageFood();
+  File? image;
+  final _picker = ImagePicker();
 
   @override
   void dispose() {
@@ -25,6 +33,15 @@ class _AddProdactState extends State<AddProdact> {
     imageController;
     nameController;
     priceController;
+  }
+
+  pickImage() async {
+    final pickFile = await _picker.pickImage(source: ImageSource.gallery);
+    if (pickFile != null) {
+      image = File(pickFile.path);
+      imageController.text = pickFile.path;
+      setState(() {});
+    }
   }
 
   @override
@@ -38,12 +55,33 @@ class _AddProdactState extends State<AddProdact> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TitleInput(
-                controller: imageController,
-                readOnly: false,
-                title: "L'image",
-                hintText: "enter URL d'image",
-                inputType: TextInputType.text),
+            Container(
+              child: image == null
+                  ? SizedBox(
+                      width: double.infinity,
+                      height: 140,
+                      child: Center(
+                        child: PickImageWidget(
+                          onTap: () {
+                            pickImage();
+                          },
+                        ),
+                      ),
+                    )
+                  : SizedBox(
+                      width: double.infinity,
+                      height: 140,
+                      child: Center(
+                        child: SizedBox(
+                          width: 130,
+                          height: 130,
+                          child: CircleAvatar(
+                            backgroundImage: FileImage(File(image!.path)),
+                          ),
+                        ),
+                      ),
+                    ),
+            ),
             TitleInput(
                 controller: nameController,
                 readOnly: false,

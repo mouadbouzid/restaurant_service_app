@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/food_category_enum.dart';
 import 'package:restaurant_service/data/models/food_model.dart';
@@ -77,8 +79,14 @@ class _AddOderState extends State<AddOder> {
                       leading: SizedBox(
                         width: 60,
                         height: 60,
-                        child: Image.network(
-                          specificProducts[index].image,
+                        child: Image(
+                          image: FileImage(File(specificProducts[index].image)),
+                          width: 40,
+                          height: 40,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(Icons.broken_image, size: 40);
+                          },
                         ),
                       ),
                       title: Text(

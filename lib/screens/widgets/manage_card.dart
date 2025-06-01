@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 
@@ -19,8 +21,18 @@ class ManageCard extends StatelessWidget {
               leading: SizedBox(
                 width: 60,
                 height: 60,
-                child: Image.network(
-                  manageFood.allProdacts[index].image,
+                child: SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: Image(
+                    image: FileImage(File(manageFood.allProdacts[index].image)),
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(Icons.broken_image, size: 40);
+                    },
+                  ),
                 ),
               ),
               title: Text(

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
 
@@ -24,10 +26,17 @@ class _OrderCardState extends State<OrderCard> {
           return Card(
             child: ListTile(
               leading: SizedBox(
-                width: 60,
-                height: 60,
-                child: Image.network(
-                  widget.oders.allOrders[index].foodModel.image,
+                width: 40,
+                height: 40,
+                child: Image(
+                  image: FileImage(
+                      File(widget.oders.allOrders[index].foodModel.image)),
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(Icons.broken_image, size: 40);
+                  },
                 ),
               ),
               title: Text(

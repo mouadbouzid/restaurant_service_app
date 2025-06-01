@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/food_category_enum.dart';
@@ -50,12 +52,19 @@ class _EditPriceState extends State<EditPrice> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TitleInput(
-                controller: imageController,
-                readOnly: true,
-                title: "L'image",
-                hintText: widget.foodModel.image,
-                inputType: TextInputType.text),
+            SizedBox(
+              width: double.infinity,
+              height: 140,
+              child: Center(
+                child: SizedBox(
+                  width: 130,
+                  height: 130,
+                  child: CircleAvatar(
+                    backgroundImage: FileImage(File(widget.foodModel.image)),
+                  ),
+                ),
+              ),
+            ),
             TitleInput(
                 controller: nameController,
                 readOnly: true,
