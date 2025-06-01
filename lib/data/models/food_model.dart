@@ -1,3 +1,4 @@
+import 'package:restaurant_service/core/database/sqflite.dart';
 import 'package:restaurant_service/data/models/food_category_enum.dart';
 
 class FoodModel {
@@ -6,6 +7,8 @@ class FoodModel {
   String image;
   double price;
   FoodCategory foodCategory;
+
+  Sqflite sqflite = Sqflite();
 
   FoodModel({
     this.id,
@@ -21,24 +24,21 @@ class FoodModel {
       'image': image,
       'name': name,
       'price': price,
-      'category': foodCategory,
+      'category': foodCategory.name,
     };
   }
 
   factory FoodModel.fromMap(Map<String, dynamic> map) {
     return FoodModel(
-        id: map['id'] as int?,
-        image: map['image'] as String,
-        name: map['name'] as String,
-        price: (map['price'] as num).toDouble(),
-        foodCategory: FoodCategory.values.firstWhere(
-            (e) => e.name == map['foodCategory'],
-            orElse: () => FoodCategory.petitDejuners));
-  }
-
-  String editPrice(double newPrice) {
-    price = newPrice;
-    return "The price has been changed.";
+      id: map['id'] as int?,
+      image: map['image'] as String,
+      name: map['name'] as String,
+      price: (map['price'] as num).toDouble(),
+      foodCategory: FoodCategory.values.firstWhere(
+        (e) => e.name == map['category'],
+        orElse: () => FoodCategory.petitDejuners,
+      ),
+    );
   }
 
   @override

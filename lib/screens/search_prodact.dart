@@ -14,11 +14,6 @@ class _SearchProdactState extends State<SearchProdact> {
   final manageFood = ManageFood();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

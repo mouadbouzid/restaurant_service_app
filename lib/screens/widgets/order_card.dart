@@ -49,22 +49,6 @@ class _OrderCardState extends State<OrderCard> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        widget.oders.allOrders[index].qauntity++;
-                        setState(() {});
-                        widget.onQuantityChanged();
-                      },
-                      icon: Icon(
-                        Icons.add_circle_rounded,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                    ),
-                    Text(
-                      "${widget.oders.allOrders[index].qauntity}",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    IconButton(
-                      onPressed: () {
                         if (widget.oders.allOrders[index].qauntity == 1) {
                           widget.oders.deleteFood(
                               widget.oders.allOrders[index].foodModel.id!);
@@ -78,6 +62,22 @@ class _OrderCardState extends State<OrderCard> {
                       },
                       icon: Icon(
                         Icons.remove_circle,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ),
+                    Text(
+                      "${widget.oders.allOrders[index].qauntity}",
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        widget.oders.allOrders[index].qauntity++;
+                        setState(() {});
+                        widget.onQuantityChanged();
+                      },
+                      icon: Icon(
+                        Icons.add_circle_rounded,
                         color: Colors.white,
                         size: 20,
                       ),

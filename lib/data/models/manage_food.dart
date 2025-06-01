@@ -1,6 +1,9 @@
+import 'package:restaurant_service/core/database/sqflite.dart';
 import 'package:restaurant_service/data/models/food_model.dart';
 
 class ManageFood {
+  List<FoodModel> allProdacts = [];
+
   ManageFood._privateConstructor(); // private constructor
   static final ManageFood _instance =
       ManageFood._privateConstructor(); // single instance
@@ -9,23 +12,29 @@ class ManageFood {
     return _instance;
   }
 
-  final List<FoodModel> allProdacts = [];
+  Sqflite sqflite = Sqflite();
 
-  void addFood(FoodModel food) {
-    allProdacts.add(food);
+  Future<void> loadFoods() async {
+    allProdacts = await sqflite.getAllData();
   }
 
-  void deleteFood(String name) {
-    allProdacts.removeWhere((item) => item.name == name);
+  Future<void> addFood(FoodModel food) async {
+    await sqflite.insertData(food);
+    await loadFoods();
   }
 
-  String editPrice(String name, double newPrice) {
-    for (var prodact in allProdacts) {
-      if (prodact.name == name) {
-        prodact.price = newPrice;
-        return "Le prix a été changé";
-      }
+  Future<void> deleteFood(String name) async {
+    var food = allProdacts.firstWhere((element) => element.name == name);
+    if (food.id != null) {
+      await sqflite.deleteData(food.id!);
+      await loadFoods();
     }
-    return "Le nom est introuvable ou incorrect";
+  }
+
+  Future<void> editPrice(String name, double newPrice) async {
+    var food = allProdacts.firstWhere((element) => element.name == name);
+    food.price = newPrice;
+    await sqflite.updateData(food);
+    await loadFoods();
   }
 }

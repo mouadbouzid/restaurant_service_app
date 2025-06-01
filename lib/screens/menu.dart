@@ -2,10 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/screens/widgets/manage_card.dart';
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
   Menu({super.key});
 
+  @override
+  State<Menu> createState() => _MenuState();
+}
+
+class _MenuState extends State<Menu> {
   final manageFood = ManageFood();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFoods();
+  }
+
+  Future<void> _loadFoods() async {
+    await manageFood.loadFoods();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {

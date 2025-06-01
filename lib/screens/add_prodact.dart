@@ -16,7 +16,7 @@ class _AddProdactState extends State<AddProdact> {
   TextEditingController imageController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
-  FoodCategory foodCategory = FoodCategory.food;
+  FoodCategory selectedCategory = FoodCategory.food;
   final foodManager = ManageFood();
 
   @override
@@ -62,7 +62,7 @@ class _AddProdactState extends State<AddProdact> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             SizedBox(height: 10),
-            DropdownButtonFormField2(
+            DropdownButtonFormField2<FoodCategory>(
               decoration: InputDecoration(
                 isDense: true,
                 contentPadding: EdgeInsets.zero,
@@ -83,7 +83,9 @@ class _AddProdactState extends State<AddProdact> {
                       ))
                   .toList(),
               onChanged: (value) {
-                foodCategory = value ?? FoodCategory.food;
+                setState(() {
+                  selectedCategory = value!;
+                });
               },
             ),
             SizedBox(height: 30),
@@ -91,16 +93,26 @@ class _AddProdactState extends State<AddProdact> {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
-                  foodManager.addFood(
-                    FoodModel(
-                      foodCategory: foodCategory,
-                      image: imageController.text,
-                      name: nameController.text,
-                      price: double.tryParse(priceController.text) ?? 0.0,
-                    ),
+                onPressed: () async {
+                  if (nameController.text.isEmpty ||
+                      imageController.text.isEmpty ||
+                      priceController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Veuillez remplir tous les champs')));
+                    return;
+                  }
+
+                  final food = FoodModel(
+                    name: nameController.text.trim(),
+                    image: imageController.text.trim(),
+                    price: double.tryParse(priceController.text.trim()) ?? 0,
+                    foodCategory: selectedCategory,
                   );
-                  Navigator.of(context).pop();
+
+                  await foodManager.addFood(food);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Produit ajouté avec succès')));
+                  Navigator.pop(context);
                 },
                 child: Text("Ajouter"),
               ),

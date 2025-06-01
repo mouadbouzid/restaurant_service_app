@@ -16,7 +16,7 @@ class Sqflite {
 
   Future<Database> _intialDb() async {
     String dataBasePath = await getDatabasesPath();
-    String path = join(dataBasePath, 'restaurantdb.dart');
+    String path = join(dataBasePath, 'restaurantdb.db');
     return await openDatabase(path, onCreate: _onCreate, version: 1);
   }
 
@@ -24,7 +24,7 @@ class Sqflite {
     Batch batch = db.batch();
     batch.execute('''
       CREATE TABLE foods (
-      id INTEGER PRIMARY KEY ATOINCREMENT NOT NULL,
+      id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
       image TEXT NOT NULL,
       name TEXT NOT NULL,
       price REAL NOT NULL,

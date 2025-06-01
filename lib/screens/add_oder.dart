@@ -22,9 +22,15 @@ class _AddOderState extends State<AddOder> {
   @override
   void initState() {
     super.initState();
+    _loadSpecificProducts();
+  }
+
+  Future<void> _loadSpecificProducts() async {
+    await manageFood.loadFoods(); //This actually loads products from SQLite
     specificProducts = manageFood.allProdacts
-        .where((it) => it.foodCategory == widget.category)
+        .where((it) => it.foodCategory.name == widget.category.name)
         .toList();
+    setState(() {});
   }
 
   @override
@@ -53,6 +59,7 @@ class _AddOderState extends State<AddOder> {
                         orderModel.addFood(FoodWithQuantityModel(
                             qauntity: 1,
                             foodModel: FoodModel(
+                                id: specificProducts[index].id,
                                 foodCategory:
                                     specificProducts[index].foodCategory,
                                 image: specificProducts[index].image,

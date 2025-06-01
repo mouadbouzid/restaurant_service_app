@@ -12,9 +12,21 @@ class Orders extends StatefulWidget {
 }
 
 class _OrdersState extends State<Orders> {
-  final manageFood = ManageFood();
-
   OrderModel orderrr = OrderModel();
+  ManageFood manageFood = ManageFood();
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFoods();
+  }
+
+  Future<void> _loadFoods() async {
+    await manageFood.loadFoods();
+    isLoading = false;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,67 +50,73 @@ class _OrdersState extends State<Orders> {
           )
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: 20,
-          horizontal: 18,
-        ),
-        child: Column(
-          spacing: 15,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: OrderCard(
-                oders: orderrr,
-                onQuantityChanged: () {
-                  setState(() {}); // rebuilds the Orders screen to update price
-                },
+      body: isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 18,
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ChoosingACategory()));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    border:
-                        Border.all(color: Colors.red, style: BorderStyle.solid),
-                    borderRadius: BorderRadius.circular(20)),
-                height: 40,
-                child: Center(
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.red,
-                    size: 35,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.red, borderRadius: BorderRadius.circular(15)),
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              width: double.infinity,
-              height: 40,
-              child: Row(
+              child: Column(
+                spacing: 15,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    "Prix :",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  Expanded(
+                    child: OrderCard(
+                      oders: orderrr,
+                      onQuantityChanged: () {
+                        setState(
+                            () {}); // rebuilds the Orders screen to update price
+                      },
+                    ),
                   ),
-                  Spacer(),
-                  Text("${orderrr.ordersPrice()} Dh",
-                      style: TextStyle(color: Colors.white, fontSize: 18))
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ChoosingACategory()));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.red, style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 40,
+                      child: Center(
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.red,
+                          size: 35,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(15)),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    width: double.infinity,
+                    height: 40,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Prix :",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                        Spacer(),
+                        Text("${orderrr.ordersPrice()} Dh",
+                            style: TextStyle(color: Colors.white, fontSize: 18))
+                      ],
+                    ),
+                  )
                 ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
     );
   }
 }
