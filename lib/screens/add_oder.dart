@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:restaurant_service/data/models/food_category_enum.dart';
+import 'package:restaurant_service/data/models/enum/food_category_enum.dart';
 import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/food_with_quantity_model.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
@@ -29,7 +29,7 @@ class _AddOderState extends State<AddOder> {
 
   Future<void> _loadSpecificProducts() async {
     await manageFood.loadFoods(); //This actually loads products from SQLite
-    specificProducts = manageFood.allProdacts
+    specificProducts = manageFood.allProducts
         .where((it) => it.foodCategory.name == widget.category.name)
         .toList();
     setState(() {});

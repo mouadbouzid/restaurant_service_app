@@ -26,11 +26,11 @@ class DeleteProdact extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: manageFood.allProdacts.length,
+                itemCount: manageFood.allProducts.length,
                 itemBuilder: (BuildContext content, int index) {
                   return GestureDetector(
                     onTap: () {
-                      manageFood.deleteFood(manageFood.allProdacts[index].name);
+                      manageFood.deleteFood(manageFood.allProducts[index].name);
                       Navigator.of(context).pop();
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Le produit a été suprimé")));
@@ -42,7 +42,7 @@ class DeleteProdact extends StatelessWidget {
                           height: 60,
                           child: Image(
                             image: FileImage(
-                                File(manageFood.allProdacts[index].image)),
+                                File(manageFood.allProducts[index].image)),
                             width: 40,
                             height: 40,
                             fit: BoxFit.cover,
@@ -52,11 +52,11 @@ class DeleteProdact extends StatelessWidget {
                           ),
                         ),
                         title: Text(
-                          manageFood.allProdacts[index].name,
+                          manageFood.allProducts[index].name,
                           style: TextStyle(fontSize: 20),
                         ),
                         trailing: Text(
-                          " ${manageFood.allProdacts[index].price} Dh",
+                          " ${manageFood.allProducts[index].price} Dh",
                           style: TextStyle(fontSize: 18),
                         ),
                       ),

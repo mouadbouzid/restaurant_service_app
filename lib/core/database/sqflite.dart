@@ -34,26 +34,26 @@ class Sqflite {
     batch.commit();
   }
 
-  Future<int> insertData(FoodModel food) async {
+  Future<int> insertFood(FoodModel food) async {
     Database? mydb = await db;
     int response = await mydb!.insert('foods', food.toMap());
     return response;
   }
 
-  Future<List<FoodModel>> getAllData() async {
+  Future<List<FoodModel>> getAllFood() async {
     Database? mydb = await db;
     final response = await mydb!.query('foods');
     return response.map((item) => FoodModel.fromMap(item)).toList();
   }
 
-  Future<int> updateData(FoodModel food) async {
+  Future<int> updateFood(FoodModel food) async {
     Database? mydb = await db;
     int response = await mydb!
         .update('foods', food.toMap(), where: 'id = ?', whereArgs: [food.id]);
     return response;
   }
 
-  Future<int> deleteData(int id) async {
+  Future<int> deleteFood(int id) async {
     Database? mydb = await db;
     return await mydb!.delete('foods', where: 'id = ?', whereArgs: [id]);
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_service/data/models/food_category_enum.dart';
+import 'package:restaurant_service/data/models/enum/food_category_enum.dart';
 import 'package:restaurant_service/screens/add_oder.dart';
 
 class ChoosingACategory extends StatelessWidget {

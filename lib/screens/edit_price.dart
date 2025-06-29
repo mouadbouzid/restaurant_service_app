@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurant_service/data/models/food_category_enum.dart';
+import 'package:restaurant_service/data/models/enum/food_category_enum.dart';
 import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/layout.dart';

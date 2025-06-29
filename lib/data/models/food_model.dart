@@ -1,5 +1,4 @@
-import 'package:restaurant_service/core/database/sqflite.dart';
-import 'package:restaurant_service/data/models/food_category_enum.dart';
+import 'package:restaurant_service/data/models/enum/food_category_enum.dart';
 
 class FoodModel {
   final int? id;
@@ -7,8 +6,6 @@ class FoodModel {
   String image;
   double price;
   FoodCategory foodCategory;
-
-  Sqflite sqflite = Sqflite();
 
   FoodModel({
     this.id,

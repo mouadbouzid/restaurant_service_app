@@ -33,7 +33,7 @@ class _SearchProdactState extends State<SearchProdact> {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: manageFood.allProdacts.length,
+                itemCount: manageFood.allProducts.length,
                 itemBuilder: (BuildContext content, int index) {
                   return GestureDetector(
                     onTap: () {
@@ -41,11 +41,11 @@ class _SearchProdactState extends State<SearchProdact> {
                           builder: (content) => EditPrice(
                               foodModel: FoodModel(
                                   foodCategory: manageFood
-                                      .allProdacts[index].foodCategory,
-                                  image: manageFood.allProdacts[index].image,
-                                  name: manageFood.allProdacts[index].name,
+                                      .allProducts[index].foodCategory,
+                                  image: manageFood.allProducts[index].image,
+                                  name: manageFood.allProducts[index].name,
                                   price:
-                                      manageFood.allProdacts[index].price))));
+                                      manageFood.allProducts[index].price))));
                     },
                     child: Card(
                       child: ListTile(
@@ -54,7 +54,7 @@ class _SearchProdactState extends State<SearchProdact> {
                           height: 60,
                           child: Image(
                             image: FileImage(
-                                File(manageFood.allProdacts[index].image)),
+                                File(manageFood.allProducts[index].image)),
                             width: 40,
                             height: 40,
                             fit: BoxFit.cover,
@@ -64,11 +64,11 @@ class _SearchProdactState extends State<SearchProdact> {
                           ),
                         ),
                         title: Text(
-                          manageFood.allProdacts[index].name,
+                          manageFood.allProducts[index].name,
                           style: TextStyle(fontSize: 20),
                         ),
                         trailing: Text(
-                          " ${manageFood.allProdacts[index].price} Dh",
+                          " ${manageFood.allProducts[index].price} Dh",
                           style: TextStyle(fontSize: 18),
                         ),
                       ),

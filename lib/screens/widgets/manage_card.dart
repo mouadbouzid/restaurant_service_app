@@ -14,7 +14,7 @@ class ManageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: manageFood.allProdacts.length,
+        itemCount: manageFood.allProducts.length,
         itemBuilder: (BuildContext content, int index) {
           return Card(
             child: ListTile(
@@ -25,7 +25,7 @@ class ManageCard extends StatelessWidget {
                   width: 60,
                   height: 60,
                   child: Image(
-                    image: FileImage(File(manageFood.allProdacts[index].image)),
+                    image: FileImage(File(manageFood.allProducts[index].image)),
                     width: 60,
                     height: 60,
                     fit: BoxFit.cover,
@@ -36,11 +36,11 @@ class ManageCard extends StatelessWidget {
                 ),
               ),
               title: Text(
-                manageFood.allProdacts[index].name,
+                manageFood.allProducts[index].name,
                 style: TextStyle(fontSize: 20),
               ),
               trailing: Text(
-                " ${manageFood.allProdacts[index].price} Dh",
+                " ${manageFood.allProducts[index].price} Dh",
                 style: TextStyle(fontSize: 18),
               ),
             ),
