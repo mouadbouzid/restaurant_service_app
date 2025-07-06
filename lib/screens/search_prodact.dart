@@ -19,7 +19,7 @@ class _SearchProdactState extends State<SearchProdact> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Recherche de produits"),
+        title: Text("Search Products"),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(

@@ -39,7 +39,7 @@ class _AddOderState extends State<AddOder> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sélection de produits"),
+        title: Text("Product Selection"),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(

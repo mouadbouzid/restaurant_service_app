@@ -48,7 +48,7 @@ class _AddProdactState extends State<AddProdact> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ajauter un produit"),
+        title: Text("Add a Product"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 14, vertical: 20),
@@ -85,15 +85,15 @@ class _AddProdactState extends State<AddProdact> {
             TitleInput(
                 controller: nameController,
                 readOnly: false,
-                title: "Le nome",
-                hintText: "enter le nome",
+                title: "Name",
+                hintText: "Enter name",
                 inputType: TextInputType.text),
             TitleInput(
                 controller: priceController,
                 readOnly: false,
-                title: "Le prixe",
-                hintText: "enter le prixe",
-                inputType: TextInputType.text),
+                title: "Price",
+                hintText: "Enter price",
+                inputType: TextInputType.number),
             SizedBox(height: 10),
             Text(
               'Catogry :',
@@ -136,7 +136,7 @@ class _AddProdactState extends State<AddProdact> {
                       imageController.text.isEmpty ||
                       priceController.text.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('Veuillez remplir tous les champs')));
+                        content: Text('Please fill in all the fields')));
                     return;
                   }
 
@@ -147,12 +147,17 @@ class _AddProdactState extends State<AddProdact> {
                     foodCategory: selectedCategory,
                   );
 
-                  await foodManager.addFood(food);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Produit ajouté avec succès')));
-                  Navigator.pop(context);
+                  int response = await foodManager.addFood(food);
+                  if (response != 0) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Product added successfully')));
+                    Navigator.pop(context);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Failed to add product')));
+                  }
                 },
-                child: Text("Ajouter"),
+                child: Text("Add"),
               ),
             ),
           ],

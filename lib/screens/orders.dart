@@ -43,7 +43,7 @@ class _OrdersState extends State<Orders> {
                 });
               },
               child: Text(
-                "supprimer",
+                "Delete All",
                 style: TextStyle(fontSize: 18, color: Colors.red),
               ),
             ),
@@ -105,7 +105,7 @@ class _OrdersState extends State<Orders> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "Prix :",
+                          "Total Price :",
                           style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
                         Spacer(),

@@ -27,7 +27,7 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Le menu"),
+        title: Text("Menu"),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(

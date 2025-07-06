@@ -12,7 +12,7 @@ class DeleteProdact extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("suprimé de produits"),
+        title: Text("Delete Products"),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -29,11 +29,17 @@ class DeleteProdact extends StatelessWidget {
                 itemCount: manageFood.allProducts.length,
                 itemBuilder: (BuildContext content, int index) {
                   return GestureDetector(
-                    onTap: () {
-                      manageFood.deleteFood(manageFood.allProducts[index].name);
-                      Navigator.of(context).pop();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Le produit a été suprimé")));
+                    onTap: () async {
+                      int response = await manageFood
+                          .deleteFood(manageFood.allProducts[index].name);
+                      if (response != 0) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("The product was deleted")));
+                        Navigator.of(context).pop();
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('The product was not deleted')));
+                      }
                     },
                     child: Card(
                       child: ListTile(

@@ -42,10 +42,10 @@ class _LayoutAppState extends State<LayoutApp> {
               icon: Icon(_index == 0
                   ? Iconsax.shopping_bag
                   : Iconsax.shopping_bag_copy),
-              label: 'Commandes'),
+              label: 'Orders'),
           NavigationDestination(
               icon: Icon(_index == 1 ? Iconsax.edit : Iconsax.edit_2),
-              label: 'Gérer')
+              label: 'Manage')
         ],
       ),
     );

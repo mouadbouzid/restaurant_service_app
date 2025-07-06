@@ -34,6 +34,7 @@ class TitleInput extends StatelessWidget {
         TextFormField(
           controller: controller,
           cursorColor: Colors.blueGrey,
+          keyboardType: inputType,
           readOnly: readOnly,
           decoration: InputDecoration(
             hintText: hintText,

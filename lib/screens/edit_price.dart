@@ -20,7 +20,7 @@ class EditPrice extends StatefulWidget {
 class _EditPriceState extends State<EditPrice> {
   TextEditingController imageController = TextEditingController();
   TextEditingController nameController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
+  TextEditingController newPriceController = TextEditingController();
   FoodCategory foodCategory = FoodCategory.food;
   final foodManager = ManageFood();
 
@@ -29,7 +29,7 @@ class _EditPriceState extends State<EditPrice> {
     super.initState();
     imageController.text = widget.foodModel.image;
     nameController.text = widget.foodModel.name;
-    priceController.text = widget.foodModel.price.toString();
+    newPriceController.text = widget.foodModel.price.toString();
     foodCategory = widget.foodModel.foodCategory;
   }
 
@@ -37,7 +37,7 @@ class _EditPriceState extends State<EditPrice> {
   void dispose() {
     imageController.dispose();
     nameController.dispose();
-    priceController.dispose();
+    newPriceController.dispose();
     super.dispose();
   }
 
@@ -45,7 +45,7 @@ class _EditPriceState extends State<EditPrice> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ajauter un produit"),
+        title: Text("Edit Product"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 14, vertical: 20),
@@ -68,14 +68,14 @@ class _EditPriceState extends State<EditPrice> {
             TitleInput(
                 controller: nameController,
                 readOnly: true,
-                title: "Le nome",
+                title: "Name",
                 hintText: widget.foodModel.name,
                 inputType: TextInputType.text),
             TitleInput(
-                controller: priceController,
+                controller: newPriceController,
                 readOnly: false,
-                title: "Nouveau prix",
-                hintText: "enter nouveau prix",
+                title: "New Price",
+                hintText: "Enter new price",
                 inputType: TextInputType.text),
             SizedBox(height: 10),
             Text(
@@ -110,19 +110,26 @@ class _EditPriceState extends State<EditPrice> {
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
-                  foodManager.editPrice(
+                onPressed: () async {
+                  int response = await foodManager.editPrice(
                     nameController.text,
-                    double.tryParse(priceController.text) ?? 0.0,
+                    double.tryParse(newPriceController.text) ?? 0.0,
                   );
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LayoutApp(initialIndex: 1)),
-                    (route) => false,
-                  );
+                  if (response != 0) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('Product updated successfully')));
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LayoutApp(initialIndex: 1)),
+                      (route) => false,
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Failed to update product')));
+                  }
                 },
-                child: Text("Ajouter"),
+                child: Text("Update"),
               ),
             ),
           ],

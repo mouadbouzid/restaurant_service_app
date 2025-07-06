@@ -12,8 +12,8 @@ class OrderModel {
     allOrders.add(foodWithQuantityModel);
   }
 
-  void deleteFood(int namber) {
-    allOrders.removeWhere((item) => item.foodModel.id == namber);
+  void deleteFood(int foodId) {
+    allOrders.removeWhere((item) => item.foodModel.id == foodId);
   }
 
   void deleteAllFood() {
