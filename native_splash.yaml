@@ -5,13 +5,15 @@ flutter_native_splash:
   web: false
 
   background_image: "assets/images/white_background.jpeg" # Or add a color like this example -> color: "#00B9E8"
-  image: "assets/images/image.png"
+  image: "assets/images/background_app.png"
+  branding: "assets/images/branding_white.png"
 
   # Dark mode
   background_image_dark: "assets/images/black_background.jpeg"
-  image_dark: "assets/images/image.png"
+  image_dark: "assets/images/background_app.png"
+  branding_dark: "assets/images/branding_dark.png"
 
   android_12:
     # The background image property is not supported in this version of Android
     color: "#00B9E8"
-    image: "assets/images/image.png"
+    image: "assets/images/background_app.png"
