@@ -3,6 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 
+// A StatelessWidget that displays a list of all food products in card format
+// This widget is used to show food items with their images, names, and prices
+// in a scrollable list view for management purposes
 class ManageCard extends StatelessWidget {
   final ManageFood manageFood;
 
@@ -25,6 +28,7 @@ class ManageCard extends StatelessWidget {
                   width: 60,
                   height: 60,
                   child: Image(
+                    // Load image from file path stored in product data
                     image: FileImage(File(manageFood.allProducts[index].image)),
                     width: 60,
                     height: 60,

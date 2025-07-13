@@ -8,15 +8,17 @@ import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
 import 'package:restaurant_service/layout.dart';
 
-class AddOder extends StatefulWidget {
+// StatefulWidget for adding orders - displays food items from a specific category
+
+class AddOrder extends StatefulWidget {
   final FoodCategory category;
-  const AddOder({super.key, required this.category});
+  const AddOrder({super.key, required this.category});
 
   @override
-  State<AddOder> createState() => _AddOderState();
+  State<AddOrder> createState() => _AddOrderState();
 }
 
-class _AddOderState extends State<AddOder> {
+class _AddOrderState extends State<AddOrder> {
   final manageFood = ManageFood();
   List<FoodModel> specificProducts = [];
   OrderModel orderModel = OrderModel();
@@ -27,6 +29,7 @@ class _AddOderState extends State<AddOder> {
     _loadSpecificProducts();
   }
 
+  // Asynchronous method to load and filter products from database
   Future<void> _loadSpecificProducts() async {
     await manageFood.loadFoods(); //This actually loads products from SQLite
     specificProducts = manageFood.allProducts
@@ -58,15 +61,19 @@ class _AddOderState extends State<AddOder> {
                   return Card(
                     child: ListTile(
                       onTap: () {
-                        orderModel.addFood(FoodWithQuantityModel(
+                        orderModel.addFood(
+                          FoodWithQuantityModel(
                             qauntity: 1,
                             foodModel: FoodModel(
-                                id: specificProducts[index].id,
-                                foodCategory:
-                                    specificProducts[index].foodCategory,
-                                image: specificProducts[index].image,
-                                name: specificProducts[index].name,
-                                price: specificProducts[index].price)));
+                              id: specificProducts[index].id,
+                              foodCategory:
+                                  specificProducts[index].foodCategory,
+                              image: specificProducts[index].image,
+                              name: specificProducts[index].name,
+                              price: specificProducts[index].price,
+                            ),
+                          ),
+                        );
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
@@ -80,10 +87,12 @@ class _AddOderState extends State<AddOder> {
                         width: 60,
                         height: 60,
                         child: Image(
+                          // Load image from file path stored in database
                           image: FileImage(File(specificProducts[index].image)),
                           width: 40,
                           height: 40,
                           fit: BoxFit.cover,
+                          // Error handling - show broken image icon if image fails to load
                           errorBuilder: (context, error, stackTrace) {
                             return Icon(Icons.broken_image, size: 40);
                           },

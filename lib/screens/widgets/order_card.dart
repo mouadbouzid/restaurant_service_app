@@ -3,8 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/oder_model.dart';
 
+// A StatefulWidget that displays a list of ordered food items with quantity controls
+// This widget shows each order item with image, name, price, and interactive quantity buttons
+// allowing users to increase/decrease quantities or remove items from the order
 class OrderCard extends StatefulWidget {
+  // Callback function triggered when quantity changes to update parent widget
   final VoidCallback onQuantityChanged;
+
   final OrderModel oders;
 
   const OrderCard({
@@ -58,12 +63,14 @@ class _OrderCardState extends State<OrderCard> {
                   children: [
                     IconButton(
                       onPressed: () {
+                        // If quantity is 1, remove item completely
                         if (widget.oders.allOrders[index].qauntity == 1) {
                           widget.oders.deleteFood(
                               widget.oders.allOrders[index].foodModel.id!);
                           setState(() {});
                           widget.onQuantityChanged();
                         } else {
+                          // Otherwise, decrease quantity by 1
                           widget.oders.allOrders[index].qauntity--;
                           setState(() {});
                           widget.onQuantityChanged();
@@ -83,7 +90,7 @@ class _OrderCardState extends State<OrderCard> {
                       onPressed: () {
                         widget.oders.allOrders[index].qauntity++;
                         setState(() {});
-                        widget.onQuantityChanged();
+                        widget.onQuantityChanged(); // Notify parent widget
                       },
                       icon: Icon(
                         Icons.add_circle_rounded,

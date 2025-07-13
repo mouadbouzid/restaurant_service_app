@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:restaurant_service/screens/add_prodact.dart';
-import 'package:restaurant_service/screens/delete_prodact.dart';
+import 'package:restaurant_service/screens/add_product.dart';
+import 'package:restaurant_service/screens/delete_product.dart';
 import 'package:restaurant_service/screens/menu.dart';
 import 'package:restaurant_service/screens/search_prodact.dart';
 
+// StatelessWidget that serves as the main management dashboard
+// Provides navigation to all restaurant management functions
 class Manage extends StatelessWidget {
   const Manage({super.key});
 
@@ -40,7 +42,7 @@ class Manage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AddProdact()));
+                          builder: (context) => const AddProduct()));
                 },
                 leading: Image.asset(
                   "assets/icons/add_food.png",
@@ -72,7 +74,7 @@ class Manage extends StatelessWidget {
               child: ListTile(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DeleteProdact()));
+                      MaterialPageRoute(builder: (context) => DeleteProduct()));
                 },
                 leading: Image.asset(
                   "assets/icons/delete_food.png",

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// A StatelessWidget that creates a reusable form input field with a title label
+// This widget provides a consistent input field design with customizable properties
+// including title, hint text, input type, and read-only state
 class TitleInput extends StatelessWidget {
   const TitleInput(
       {super.key,

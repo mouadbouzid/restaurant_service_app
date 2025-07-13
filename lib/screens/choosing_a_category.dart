@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/enum/food_category_enum.dart';
-import 'package:restaurant_service/screens/add_oder.dart';
+import 'package:restaurant_service/screens/add_order.dart';
 
+// StatelessWidget for displaying food categories in a grid layout
+// Users can select a category to view products within that category
 class ChoosingACategory extends StatelessWidget {
   ChoosingACategory({super.key});
 
+  // List of food category names to display to users
   final List<String> _foodCategory = [
     "Petit Dejeuners",
     "Boissons",
@@ -12,12 +15,17 @@ class ChoosingACategory extends StatelessWidget {
     "Food",
   ];
 
+  // List of image file names corresponding to each food category
+  // These images are stored in assets/images/ folder
   final List<String> foodCategoryImages = [
     "breakfast.png",
     "drinks.png",
     "tea_time.png",
     "food.png",
   ];
+
+  // List of enum values that correspond to each category
+  // Used for navigation and filtering products
   final List<FoodCategory> enumCategories = [
     FoodCategory.petitDejuners,
     FoodCategory.boissons,
@@ -44,7 +52,7 @@ class ChoosingACategory extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) =>
-                          AddOder(category: enumCategories[index]),
+                          AddOrder(category: enumCategories[index]),
                     ),
                   );
                 },

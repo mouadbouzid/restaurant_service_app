@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 
-class DeleteProdact extends StatelessWidget {
-  DeleteProdact({super.key});
+// StatelessWidget for displaying and deleting products from the restaurant menu
+// Users can tap on any product to delete it from the database
+class DeleteProduct extends StatelessWidget {
+  DeleteProduct({super.key});
 
   final manageFood = ManageFood();
 

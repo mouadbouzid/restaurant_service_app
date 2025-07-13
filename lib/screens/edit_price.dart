@@ -8,6 +8,8 @@ import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/layout.dart';
 import 'package:restaurant_service/screens/widgets/title_input.dart';
 
+// StatefulWidget for editing product prices
+// Allows users to update the price of an existing food item
 class EditPrice extends StatefulWidget {
   const EditPrice({super.key, required this.foodModel});
 
@@ -27,6 +29,7 @@ class _EditPriceState extends State<EditPrice> {
   @override
   void initState() {
     super.initState();
+    // Pre-populate form fields with existing product data
     imageController.text = widget.foodModel.image;
     nameController.text = widget.foodModel.name;
     newPriceController.text = widget.foodModel.price.toString();

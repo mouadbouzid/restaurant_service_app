@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
+// A StatefulWidget that provides a circular image picker interface
+// This widget displays a circular avatar with a camera button overlay
+// allowing users to tap and trigger image selection functionality
+
 class PickImageWidget extends StatefulWidget {
+  // Callback function triggered when the camera button is tapped
+  // This should handle the image picking logic (camera, gallery, etc.)
   final VoidCallback onTap;
 
   const PickImageWidget({super.key, required this.onTap});

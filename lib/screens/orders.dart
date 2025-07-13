@@ -4,6 +4,7 @@ import 'package:restaurant_service/data/models/oder_model.dart';
 import 'package:restaurant_service/screens/choosing_a_category.dart';
 import 'package:restaurant_service/screens/widgets/order_card.dart';
 
+// Handles order management, food loading, and UI state updates
 class Orders extends StatefulWidget {
   const Orders({super.key});
 

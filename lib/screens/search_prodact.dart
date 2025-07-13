@@ -5,6 +5,9 @@ import 'package:restaurant_service/data/models/food_model.dart';
 import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/screens/edit_price.dart';
 
+// A StatefulWidget that displays a searchable list of products
+// This widget shows all available products in a scrollable list format
+// allowing users to tap on items to edit their details
 class SearchProdact extends StatefulWidget {
   const SearchProdact({super.key});
 

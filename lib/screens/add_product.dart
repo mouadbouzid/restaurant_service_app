@@ -9,14 +9,15 @@ import 'package:restaurant_service/data/models/manage_food.dart';
 import 'package:restaurant_service/screens/widgets/pick_image_widget.dart';
 import 'package:restaurant_service/screens/widgets/title_input.dart';
 
-class AddProdact extends StatefulWidget {
-  const AddProdact({super.key});
+// StatefulWidget for adding new products to the restaurant menu
+class AddProduct extends StatefulWidget {
+  const AddProduct({super.key});
 
   @override
-  State<AddProdact> createState() => _AddProdactState();
+  State<AddProduct> createState() => _AddProductState();
 }
 
-class _AddProdactState extends State<AddProdact> {
+class _AddProductState extends State<AddProduct> {
   TextEditingController imageController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -25,6 +26,7 @@ class _AddProdactState extends State<AddProdact> {
 
   final foodManager = ManageFood();
   File? image;
+  // Image picker instance for selecting images from gallery
   final _picker = ImagePicker();
 
   @override
@@ -35,10 +37,13 @@ class _AddProdactState extends State<AddProdact> {
     priceController;
   }
 
+  // Method to pick image from device gallery
   pickImage() async {
     final pickFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickFile != null) {
+      // Create File object from selected image path
       image = File(pickFile.path);
+      // Store the image path in the controller for form validation
       imageController.text = pickFile.path;
       setState(() {});
     }
@@ -114,6 +119,7 @@ class _AddProdactState extends State<AddProdact> {
               ),
               isExpanded: true,
               hint: Text('Select Category'),
+              // Create dropdown items from FoodCategory enum values
               items: FoodCategory.values
                   .map((category) => DropdownMenuItem(
                         value: category,
