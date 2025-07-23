@@ -1,16 +1,17 @@
-# restaurant_service
+"Restaurant Service App"
 
-A new Flutter project.
+Description: This app helps manage food orders in a restaurant by displaying products, calculating total prices, and providing functionalities for adding, deleting, and updating menu items. It also supports managing orders, updating prices, and categorizing food items. The app uses Sqflite for local database management to store food products, orders, and related data efficiently.
 
-## Getting Started
+Features
 
-This project is a starting point for a Flutter application.
+- View and manage food products
 
-A few resources to get you started if this is your first Flutter project:
+- Categorize products (e.g., Petit Dejeuners, Boissons, Tea Time, Food)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Add, edit, and delete products
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Track and calculate order prices
+
+- Use Sqflite for local storage of orders and products
+
+- Image picker functionality for adding food item images
