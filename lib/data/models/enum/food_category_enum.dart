@@ -1,1 +1,1 @@
-enum FoodCategory { petitDejuners, boissons, teaTime, food }
+enum FoodCategory { breakfast, drinks, teaTime, food }

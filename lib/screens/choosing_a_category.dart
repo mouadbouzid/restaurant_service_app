@@ -9,9 +9,9 @@ class ChoosingACategory extends StatelessWidget {
 
   // List of food category names to display to users
   final List<String> _foodCategory = [
-    "Petit Dejeuners",
+    "Breakfast",
     "Boissons",
-    "Tea Time",
+    "Drinks",
     "Food",
   ];
 
@@ -27,8 +27,8 @@ class ChoosingACategory extends StatelessWidget {
   // List of enum values that correspond to each category
   // Used for navigation and filtering products
   final List<FoodCategory> enumCategories = [
-    FoodCategory.petitDejuners,
-    FoodCategory.boissons,
+    FoodCategory.breakfast,
+    FoodCategory.drinks,
     FoodCategory.teaTime,
     FoodCategory.food,
   ];

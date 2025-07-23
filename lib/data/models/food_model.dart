@@ -33,7 +33,7 @@ class FoodModel {
       price: (map['price'] as num).toDouble(),
       foodCategory: FoodCategory.values.firstWhere(
         (e) => e.name == map['category'],
-        orElse: () => FoodCategory.petitDejuners,
+        orElse: () => FoodCategory.breakfast,
       ),
     );
   }
